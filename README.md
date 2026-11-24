@@ -65,7 +65,7 @@ A Retrieval-Augmented Generation (RAG) assistant that:
 |---|---|
 | <img src="docs/screenshots/02-competitions.png" width="100%"> | <img src="docs/screenshots/03-chat-answer.png" width="100%"> |
 
-| Admin analytics: most-asked topics and gaps in the specification |
+| Admin analytics: most-asked topics and gaps in the specification (demo data) |
 |---|
 | <img src="docs/screenshots/05-admin-analytics.png" width="100%"> |
 
@@ -115,7 +115,7 @@ Everything runs on Cloudflare's serverless edge: there is no server to maintain 
 ├── scripts/
 │   ├── chunk_new.py    # Offline batch chunking of specification PDFs
 │   ├── ingest.mjs      # Embeds chunks via the Workers AI REST API → NDJSON for Vectorize
-│   └── migrations/     # schema.sql + migration_v2 … v13 (the schema's full history)
+│   └── migrations/     # current_schema.sql + full history (schema.sql, migration_v2 … v13)
 ├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── DEVELOPMENT_JOURNEY.md
@@ -147,10 +147,10 @@ npm run r2:create
 **2. Create the database schema**
 
 ```bash
-npm run db:schema:remote
-# then apply scripts/migrations/migration_v2 … v13 in order, e.g.
-npm run db:migrate-v2:remote
+npm run db:current:remote   # current_schema.sql: the full production schema in one file
 ```
+
+The step-by-step history (`schema.sql` + `migration_v2` … `v13`) is kept in `scripts/migrations/` for reference.
 
 **3. Set the secrets**
 

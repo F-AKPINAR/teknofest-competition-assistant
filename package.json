@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
+    "db:current:local": "wrangler d1 execute iha-sss-db --local --file=./scripts/migrations/current_schema.sql",
+    "db:current:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/current_schema.sql",
     "db:schema:local": "wrangler d1 execute iha-sss-db --local --file=./scripts/migrations/schema.sql",
     "db:schema:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/schema.sql",
     "db:migrate-v2:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v2.sql",

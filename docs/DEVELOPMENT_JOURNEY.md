@@ -24,6 +24,20 @@ That shaped our main principle: **show it working, don't describe it.**
 | **Aug 26** | **Submission**: live prototype + pitch deck + business model canvas + demo video. |
 | **Sep 5–6** | Post-submission improvements, **migrations v9 → v13**: reviewers scoped to competitions, clickable source badges that open the PDF on the cited page, a per-competition question analytics view, FAQs that keep their sources, and a fix for a missing column in production. |
 
+## Where it stands today (November 2026)
+
+The prototype is still live on the same deployment (last code deploy: 6 September 2026). Figures from the production database and index:
+
+| Metric | Value |
+|---|---|
+| Competitions with an indexed knowledge base | 5 |
+| Vectors in the Vectorize index | 569 (533 from the initial batch ingest + PDFs uploaded through the Content Manager panel) |
+| Curated FAQ entries | 53 across 5 competitions |
+| Questions logged | 63 |
+| Support tickets / appeals created | 28 |
+
+These are prototype-scale numbers from the jury, the team and demo testing, not production traffic.
+
 ## Notable problems we solved
 
 **1. Infinite request loop during PDF processing.**
