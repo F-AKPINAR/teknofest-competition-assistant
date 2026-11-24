@@ -1,0 +1,43 @@
+# Cloudflare Worker configuration
+# Live deployment: https://yarismalar-asistani.farukakpinar301.workers.dev
+name = "yarismalar-asistani"
+main = "src/worker/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# To attach a custom domain, add the domain to Cloudflare and uncomment:
+# [[routes]]
+# pattern = "www.your-domain.com"
+# custom_domain = true
+
+# Static frontend (public/) is served by the same Worker
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Workers AI: embeddings (bge-m3) + answer generation (Llama 3.3 70B)
+[ai]
+binding = "AI"
+
+# D1: users, tickets, FAQs, documents, question log
+# Create with `npx wrangler d1 create iha-sss-db` and paste the returned id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "iha-sss-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Vectorize: embeddings of specification chunks (1024-dim, cosine)
+[[vectorize]]
+binding = "VECTORIZE_INDEX"
+index_name = "iha-sss-index"
+
+# R2: raw PDFs uploaded by the Content Manager
+[[r2_buckets]]
+binding = "DOCS_BUCKET"
+bucket_name = "iha-sss-documents"
+
+# Secrets are NOT stored here. Set them with:
+#   npx wrangler secret put AUTH_SECRET     # signs login tokens
+#   npx wrangler secret put SETUP_KEY       # unlocks /api/setup
+#   npx wrangler secret put DEMO_PASSWORD   # password for seeded demo staff accounts
+# For local development put them in a .dev.vars file (git-ignored).

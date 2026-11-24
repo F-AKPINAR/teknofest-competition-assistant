@@ -1,0 +1,41 @@
+{
+  "name": "teknofest-competition-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RAG-based, source-grounded Q&A assistant for TEKNOFEST competition specifications (T3 Foundation AI Creathon 2026, Problem 5).",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:schema:local": "wrangler d1 execute iha-sss-db --local --file=./scripts/migrations/schema.sql",
+    "db:schema:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/schema.sql",
+    "db:migrate-v2:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v2.sql",
+    "db:migrate-v3:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v3.sql",
+    "db:migrate-v4:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v4.sql",
+    "db:migrate-v5:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v5.sql",
+    "db:migrate-v6:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v6.sql",
+    "db:migrate-v7:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v7.sql",
+    "db:migrate-v8:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v8.sql",
+    "db:migrate-v9:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v9.sql",
+    "db:migrate-v10:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v10.sql",
+    "db:migrate-v11:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v11.sql",
+    "db:migrate-v12:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v12.sql",
+    "db:migrate-v13:remote": "wrangler d1 execute iha-sss-db --remote --file=./scripts/migrations/migration_v13.sql",
+    "ingest": "node scripts/ingest.mjs",
+    "ingest:new": "node scripts/ingest.mjs chunks_new.json vectors_new.ndjson",
+    "vectorize:create": "wrangler vectorize create iha-sss-index --dimensions=1024 --metric=cosine",
+    "vectorize:create-metadata-index": "wrangler vectorize create-metadata-index iha-sss-index --property-name=competition_id --type=string",
+    "vectorize:insert": "wrangler vectorize insert iha-sss-index --file=./knowledge/vectors.ndjson",
+    "vectorize:insert-new": "wrangler vectorize insert iha-sss-index --file=./knowledge/vectors_new.ndjson",
+    "vectorize:delete": "wrangler vectorize delete iha-sss-index",
+    "r2:create": "wrangler r2 bucket create iha-sss-documents"
+  },
+  "dependencies": {
+    "hono": "^4.6.0",
+    "unpdf": "^0.12.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "wrangler": "^3.90.0"
+  },
+  "license": "MIT"
+}

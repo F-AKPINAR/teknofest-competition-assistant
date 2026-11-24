@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.dev.vars
+*.log
+.DS_Store
+
+# Generated knowledge base (regenerate with scripts/chunk_new.py + npm run ingest)
+knowledge/
+
+# Official TEKNOFEST specification PDFs are not redistributed; download from teknofest.org
+public/kaynak/*.pdf
+source-docs/
