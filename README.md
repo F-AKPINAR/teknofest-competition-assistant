@@ -11,7 +11,7 @@
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
 *Built for the **T3 Foundation AI Creathon 2026**, Problem 5: "TEKNOFEST / UAV FAQ & Chatbot Assistant".*
-*Team **Gazi Uzay***
+*🏆 **Finalist** (14 finalists out of 76 teams) · Team **Gazi Uzay***
 
 [**▶ Try the live demo**](https://yarismalar-asistani.farukakpinar301.workers.dev) · [Architecture](docs/ARCHITECTURE.md) · [Development Journey](docs/DEVELOPMENT_JOURNEY.md) · [Pitch Deck (TR)](docs/pitch/pitch-deck-tr.pdf)
 
